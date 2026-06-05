@@ -11,10 +11,11 @@ body {
   color: white;
 }
 
+/* ✅ LOGO STYL */
 .logo {
   display: block;
   margin: 30px auto;
-  max-width: 250px;
+  max-width: 260px;
 }
 
 h1 {
@@ -74,6 +75,9 @@ button {
 
 <body>
 
+<!-- ✅ LOGO (NOVĚ PŘIDANÉ) -->
+<img src="logo-bouggy.png" alt="Bouggy logo" class="logo">
+
 <h1>Sportovní oblečení</h1>
 
 <div class="container">
@@ -83,7 +87,7 @@ button {
 <div id="celkem">Celková cena: 0 Kč</div>
 <div id="pocet">Počet kusů: 0</div>
 
-<!-- ✅ NOVÁ POVINNÁ POLE (FORMULÁŘ) -->
+<!-- ✅ FORMULÁŘ -->
 <div class="input-box">
   <label>VAŠE JMÉNO (Příjmení Jméno):</label>
   <input type="text" id="jmeno" value="Dřevojánková Ema">
@@ -159,13 +163,12 @@ function updateSummary() {
     "Počet kusů: " + pocet;
 }
 
-/* ✅ HLAVNÍ MAILTO FUNKCE */
+/* ✅ MAILTO */
 function odeslatObjednavku() {
 
   const jmeno = document.getElementById("jmeno").value.trim();
   const telefon = document.getElementById("telefon").value.trim();
 
-  // ✅ VALIDACE FORMULÁŘE
   if (!jmeno || !telefon) {
     alert("Vyplň jméno a telefon!");
     return;
@@ -194,7 +197,7 @@ function odeslatObjednavku() {
   text += `Celkem: ${celkem} Kč\n\n`;
   text += `Zákazník: ${jmeno}\nTelefon: ${telefon}`;
 
-  /* ✅ MAILTO – OTEVŘENÍ EMAIL KLIENTA */
+  /* ✅ HLAVNÍ MAILTO */
   const email = "machalek.roman@kostka-skola.cz";
   const subject = encodeURIComponent("Nová objednávka");
   const body = encodeURIComponent(text);
