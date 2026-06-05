@@ -38,10 +38,8 @@ h1 {
 
 input[type="number"] {
   width: 70px;
-  text-align: center;
 }
 
-/* ✅ NOVÁ POLE */
 .input-box {
   margin-top: 15px;
 }
@@ -70,14 +68,12 @@ button {
   color: white;
   border: none;
   border-radius: 10px;
-  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<img src="logo-bouggy.png" class="logo">
 <h1>Sportovní oblečení</h1>
 
 <div class="container">
@@ -87,15 +83,15 @@ button {
 <div id="celkem">Celková cena: 0 Kč</div>
 <div id="pocet">Počet kusů: 0</div>
 
-<!-- ✅ NOVÁ POVINNÁ POLE -->
+<!-- ✅ NOVÁ POVINNÁ POLE (FORMULÁŘ) -->
 <div class="input-box">
-  <label>Dřevojánková Ema (Příjmení Jméno):</label>
-  <input type="text" id="jmeno" placeholder="Novák Jan">
+  <label>VAŠE JMÉNO (Příjmení Jméno):</label>
+  <input type="text" id="jmeno" value="Dřevojánková Ema">
 </div>
 
 <div class="input-box">
   <label>TELEFON:</label>
-  <input type="text" id="telefon" placeholder="+420 734 863 094">
+  <input type="text" id="telefon" value="+420 734 863 094">
 </div>
 
 <button onclick="odeslatObjednavku()">ODESLAT OBJEDNÁVKU</button>
@@ -163,12 +159,13 @@ function updateSummary() {
     "Počet kusů: " + pocet;
 }
 
-/* ✅ MAILTO LOGIKA */
+/* ✅ HLAVNÍ MAILTO FUNKCE */
 function odeslatObjednavku() {
 
   const jmeno = document.getElementById("jmeno").value.trim();
   const telefon = document.getElementById("telefon").value.trim();
 
+  // ✅ VALIDACE FORMULÁŘE
   if (!jmeno || !telefon) {
     alert("Vyplň jméno a telefon!");
     return;
@@ -197,13 +194,13 @@ function odeslatObjednavku() {
   text += `Celkem: ${celkem} Kč\n\n`;
   text += `Zákazník: ${jmeno}\nTelefon: ${telefon}`;
 
-  /* ✅ MAILTO – OTEVŘENÍ EMAILU */
-  const mail = "machalek.roman@kostka-skola.cz";
-  const subject = encodeURIComponent("Objednávka");
+  /* ✅ MAILTO – OTEVŘENÍ EMAIL KLIENTA */
+  const email = "machalek.roman@kostka-skola.cz";
+  const subject = encodeURIComponent("Nová objednávka");
   const body = encodeURIComponent(text);
 
   window.location.href =
-    `mailto:${mail}?subject=${subject}&body=${body}`;
+    `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
 window.onload = loadCSV;
